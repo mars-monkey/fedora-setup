@@ -27,7 +27,7 @@ function remove_packages {
 function upgrade_dnf_packages {
     sudo dnf update -y --refresh
     
-    
+    echo
 }
 
 check_internet_connection
@@ -40,11 +40,7 @@ remove_packages
 
 upgrade_dnf_packages
 
-check_new_release
-
-if new_release == true {
-    perform_sysupgrade
-}
+sysupgrade_major_version
 
 install_rpmfusion
 
