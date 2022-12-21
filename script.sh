@@ -1,46 +1,63 @@
-function check_internet_connection {
-    if [ $(curl https://github.com/starship-boi/fedora-setup/test.txt) == "Yay, it works!" ]
-    then
-        echo "You are connected to the Internet."
-    else
-        echo "You are not connected to the Internet: aborting..."
-        
-        exit 3
-    fi
-}
-
-function check_sudo {
-    if [ $(id -u) != "0" ]
-    then
-        echo "This script must be run using root permissions (for example with 'sudo'): aborting..."
-    fi
+function run_as_root {
+    sudo echo
 }
 
 function edit_dnf_config {
-    sudo echo -e "fastestmirror=True \nmax_parallel_downloads=10 \ndeltarpm=-2 \ndeltarpm_percentage=99" >> /etc/dnf/dnf.conf
+    echo "Enabling parallel downloads in DNF..."
+    
+    sudo echo -e "max_parallel_downloads=10" >> /etc/dnf/dnf.conf
 }
 
 function remove_packages {
-    sudo dnf remove -y evince firefox
+    echo "Removing DNF packages..."
+    
+    sudo dnf remove -y evince firefox # Add more stuff here
 }
 
 function upgrade_dnf_packages {
-    sudo dnf update -y --refresh
+    echo "Upgrading DNF packages..."
     
-    echo
+    sudo dnf update -y --refresh
 }
 
-check_internet_connection
+function install_rpmfusion {
+    echo "Installing RPM Fusion repositories..."
+    
+    sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+    
+    sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+}
 
-check_sudo
+function install_dnf_packages {
+    echo "Installing DNF packages..."
+    
+    sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav
+    \ --exclude=gstreamer1-plugins-bad-free-devel
+    
+    sudo dnf install -y 
+}
+
+function unfiltered_flathub {
+    echo "Removing Flathub filter..."
+    
+    sudo flatpak remote-delete flathub
+    
+    sudo flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
+}
+
+function install_flatpaks {
+    echo "Installing flatpaks..."
+    
+    flatpak install # 
+}
+
+run_as_root
 
 edit_dnf_config
 
 remove_packages
 
 upgrade_dnf_packages
-
-sysupgrade_major_version
 
 install_rpmfusion
 
