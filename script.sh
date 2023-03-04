@@ -11,7 +11,8 @@ function edit_dnf_config {
 function remove_packages {
     echo "Removing DNF packages..."
     
-    sudo dnf remove -y evince firefox # Add more stuff here
+    sudo dnf remove -y evince firefox libreoffice-writer libreoffice-calc libreoffice-draw libreoffice-math libreoffice-impress
+    # Add more packages here
 }
 
 function upgrade_dnf_packages {
@@ -32,9 +33,9 @@ function install_dnf_packages {
     echo "Installing DNF packages..."
     
     sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav
-    \ --exclude=gstreamer1-plugins-bad-free-devel
+    / --exclude=gstreamer1-plugins-bad-free-devel
     
-    sudo dnf install -y 
+    sudo dnf install -y distrobox @virtualization dnf-dragora
 }
 
 function unfiltered_flathub {
