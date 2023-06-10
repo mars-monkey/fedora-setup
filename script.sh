@@ -11,9 +11,10 @@ function edit_dnf_config {
     echo "gpgcheck=True" | sudo tee /etc/dnf/dnf.conf
     echo "skip_if_unavailable=True" | sudo tee -a /etc/dnf/dnf.conf
     echo "deltarpm=False" | sudo tee -a /etc/dnf/dnf.conf
-    echo "fastest_mirror=" | sudo tee -a /etc/dnf/dnf.conf
+    echo "fastest_mirror=True" | sudo tee -a /etc/dnf/dnf.conf
     echo "max_parallel_downloads=20" | sudo tee -a /etc/dnf/dnf.conf
-    echo "timeout=15" | sudo tee -a /etc/dnf/dnf.conf
+    echo "minrate=32k" | sudo tee -a /etc/dnf/dnf.conf
+    echo "timeout=20" | sudo tee -a /etc/dnf/dnf.conf
 }
 
 function remove_rpms {
@@ -42,9 +43,9 @@ function install_rpms {
     
     sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
     sudo dnf install -y lame* --exclude=lame-devel
-    sudo dnf group upgrade -y --with-optional Multimedia
+    sudo dnf group upgrade -y --with-optional --allowerasing --skip-broken Multimedia
+    sudo dnf install -y ffmpeg ffmpeg-libs libva libva-utils intel-media-driver mozilla-openh264 gnome-shell-extension-pop-shell xprop distrobox gparted @virtualization
     
-    sudo dnf install -y distrobox @virtualization
 }
 
 function install_flatpaks {
