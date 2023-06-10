@@ -6,7 +6,7 @@ function run_as_root {
 }
 
 function edit_dnf_config {
-    echo "Configuring DNF..."
+    echo -e "${GREEN}Configuring DNF..."
     
     echo "gpgcheck=True" | sudo tee /etc/dnf/dnf.conf
     echo "skip_if_unavailable=True" | sudo tee -a /etc/dnf/dnf.conf
@@ -17,19 +17,19 @@ function edit_dnf_config {
 }
 
 function remove_rpms {
-    echo "Removing RPM packages..."
+    echo -e "${GREEN}Removing RPM packages..."
     
     sudo dnf remove -y gnome-boxes gnome-calculator gnome-calendar gnome-characters cheese gnome-clocks gnome-connections gnome-contacts gnome-disk-utility simple-scan evince mediawriter firefox gnome-font-viewer gnome-color-manager eog libreoffice* gnome-logs gnome-maps gnome-photos rhythmbox gnome-terminal text-editor gnome-tour totem gnome-weather
 }
 
 function upgrade_rpms {
-    echo "Upgrading DNF packages..."
+    echo -e "${GREEN}Upgrading DNF packages..."
     
     sudo dnf update -y --refresh
 }
 
 function install_rpmfusion {
-    echo "Installing RPM Fusion repositories..."
+    echo -e "${GREEN}Installing RPM Fusion repositories..."
     
     sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
     
@@ -37,7 +37,7 @@ function install_rpmfusion {
 }
 
 function install_rpms {
-    echo "Installing DNF packages..."
+    echo -e "${GREEN}Installing DNF packages..."
     
     sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav
     / --exclude=gstreamer1-plugins-bad-free-devel
@@ -46,17 +46,17 @@ function install_rpms {
 }
 
 function install_flatpaks {
-    echo "Installing flatpaks..."
+    echo -e "${GREEN}Installing flatpaks..."
     
     flatpak install # 
 }
 
 function set_gsettings {
-    echo "Configuring GNOME..."
+    echo -e "${GREEN}Configuring GNOME..."
 }
 
 function sync_dotfiles {
-    echo "Syncing app configurations..."
+    echo -e "${GREEN}Syncing app configurations..."
 }
 
 run_as_root
