@@ -1,3 +1,6 @@
+GREEN="\033[0;32m"
+NC="\033[0m"
+
 function run_as_root {
     sudo echo
 }
@@ -8,6 +11,7 @@ function edit_dnf_config {
     echo "gpgcheck=True" | sudo tee /etc/dnf/dnf.conf
     echo "skip_if_unavailable=True" | sudo tee -a /etc/dnf/dnf.conf
     echo "deltarpm=False" | sudo tee -a /etc/dnf/dnf.conf
+    echo "fastest_mirror=" | sudo tee -a /etc/dnf/dnf.conf
     echo "max_parallel_downloads=20" | sudo tee -a /etc/dnf/dnf.conf
     echo "timeout=15" | sudo tee -a /etc/dnf/dnf.conf
 }
@@ -16,7 +20,6 @@ function remove_rpms {
     echo "Removing RPM packages..."
     
     sudo dnf remove -y gnome-boxes gnome-calculator gnome-calendar gnome-characters cheese gnome-clocks gnome-connections gnome-contacts gnome-disk-utility simple-scan evince mediawriter firefox gnome-font-viewer gnome-color-manager eog libreoffice* gnome-logs gnome-maps gnome-photos rhythmbox gnome-terminal text-editor gnome-tour totem gnome-weather
-    # Add more packages here
 }
 
 function upgrade_rpms {
