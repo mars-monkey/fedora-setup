@@ -24,7 +24,7 @@ function remove_rpms {
 }
 
 function upgrade_rpms {
-    echo -e "${GREEN}Upgrading DNF packages..."
+    echo -e "${GREEN}Upgrading RPM packages..."
     
     sudo dnf update -y --refresh
 }
@@ -39,12 +39,12 @@ function install_rpmfusion {
 }
 
 function install_rpms {
-    echo -e "${GREEN}Installing DNF packages..."
+    echo -e "${GREEN}Installing RPM packages..."
     
     sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
     sudo dnf install -y lame* --exclude=lame-devel
     sudo dnf group upgrade -y --with-optional --allowerasing --skip-broken Multimedia
-    sudo dnf install -y ffmpeg ffmpeg-libs libva libva-utils intel-media-driver mozilla-openh264 gnome-shell-extension-pop-shell xprop distrobox gparted @virtualization
+    sudo dnf install -y ffmpeg ffmpeg-libs libva libva-utils intel-media-driver mozilla-openh264 gnome-shell-extension-pop-shell xprop distrobox gparted @virtualization tlp tlp-rdw
     
 }
 
