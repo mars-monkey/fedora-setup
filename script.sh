@@ -15,7 +15,7 @@ function edit_dnf_config {
 function remove_packages {
     echo "Removing DNF packages..."
     
-    sudo dnf remove -y evince firefox libreoffice-writer libreoffice-calc libreoffice-draw libreoffice-math libreoffice-impress
+    sudo dnf remove -y gnome-boxes gnome-calculator gnome-calendar gnome-characters cheese gnome-clocks gnome-connections gnome-contacts gnome-disk-utility simple-scan evince mediawriter firefox gnome-font-viewer gnome-color-manager eog libreoffice* gnome-logs gnome-maps gnome-photos rhythmbox gnome-terminal text-editor gnome-tour totem gnome-weather
     # Add more packages here
 }
 
