@@ -3,9 +3,13 @@ function run_as_root {
 }
 
 function edit_dnf_config {
-    echo "Enabling parallel downloads in DNF..."
+    echo "Configuring DNF..."
     
-    sudo echo -e "max_parallel_downloads=10" >> /etc/dnf/dnf.conf
+    echo "gpgcheck=True" | sudo tee /etc/dnf/dnf.conf
+    echo "skip_if_unavailable=True" | sudo tee -a /etc/dnf/dnf.conf
+    echo "deltarpm=False" | sudo tee -a /etc/dnf/dnf.conf
+    echo "max_parallel_downloads=20" | sudo tee -a /etc/dnf/dnf.conf
+    echo "timeout=15" | sudo tee -a /etc/dnf/dnf.conf
 }
 
 function remove_packages {
