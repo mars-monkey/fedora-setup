@@ -32,17 +32,19 @@ function install_rpmfusion {
     echo -e "${GREEN}Installing RPM Fusion repositories..."
     
     sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-    
     sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+    
+    sudo dnf groupupdate -y core
 }
 
 function install_rpms {
     echo -e "${GREEN}Installing DNF packages..."
     
-    sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav
-    / --exclude=gstreamer1-plugins-bad-free-devel
+    sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+    sudo dnf install -y lame* --exclude=lame-devel
+    sudo dnf group upgrade -y --with-optional Multimedia
     
-    sudo dnf install -y distrobox @virtualization dnf-dragora
+    sudo dnf install -y distrobox @virtualization
 }
 
 function install_flatpaks {
