@@ -12,14 +12,14 @@ function edit_dnf_config {
     echo "timeout=15" | sudo tee -a /etc/dnf/dnf.conf
 }
 
-function remove_packages {
-    echo "Removing DNF packages..."
+function remove_rpms {
+    echo "Removing RPM packages..."
     
     sudo dnf remove -y gnome-boxes gnome-calculator gnome-calendar gnome-characters cheese gnome-clocks gnome-connections gnome-contacts gnome-disk-utility simple-scan evince mediawriter firefox gnome-font-viewer gnome-color-manager eog libreoffice* gnome-logs gnome-maps gnome-photos rhythmbox gnome-terminal text-editor gnome-tour totem gnome-weather
     # Add more packages here
 }
 
-function upgrade_dnf_packages {
+function upgrade_rpms {
     echo "Upgrading DNF packages..."
     
     sudo dnf update -y --refresh
@@ -33,7 +33,7 @@ function install_rpmfusion {
     sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 }
 
-function install_dnf_packages {
+function install_rpms {
     echo "Installing DNF packages..."
     
     sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav
@@ -42,33 +42,31 @@ function install_dnf_packages {
     sudo dnf install -y distrobox @virtualization dnf-dragora
 }
 
-function unfiltered_flathub {
-    echo "Removing Flathub filter..."
-    
-    sudo flatpak remote-delete flathub
-    
-    sudo flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
-}
-
 function install_flatpaks {
     echo "Installing flatpaks..."
     
     flatpak install # 
 }
 
+function set_gsettings {
+    echo "Configuring GNOME..."
+}
+
+function sync_dotfiles {
+    echo "Syncing app configurations..."
+}
+
 run_as_root
 
 edit_dnf_config
 
-remove_packages
+remove_rpms
 
-upgrade_dnf_packages
+upgrade_rpms
 
 install_rpmfusion
 
-install_dnf_packages
-
-unfiltered_flathub
+install_rpms
 
 install_flatpaks
 
