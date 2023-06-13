@@ -13,7 +13,7 @@ edit_dnf_config() {
 remove_rpms() {
     printf '\nRemoving RPM packages...\n\n'
     
-    sudo dnf remove -y gnome-boxes gnome-calculator gnome-calendar gnome-characters cheese gnome-clocks gnome-connections gnome-contacts gnome-disk-utility simple-scan evince mediawriter firefox gnome-font-viewer gnome-color-manager eog libreoffice* gnome-logs gnome-maps gnome-photos rhythmbox gnome-terminal text-editor gnome-tour totem gnome-weather
+    sudo dnf remove -y gnome-boxes gnome-calculator gnome-calendar gnome-characters cheese gnome-clocks gnome-connections gnome-contacts gnome-disk-utility simple-scan evince mediawriter firefox gnome-font-viewer gnome-color-manager eog libreoffice* gnome-logs gnome-maps gnome-photos rhythmbox text-editor gnome-tour totem gnome-weather
 }
 
 upgrade_rpms() {
@@ -34,17 +34,14 @@ install_rpmfusion() {
 install_rpms() {
     printf '\nInstalling RPM packages...\n\n'
     
-    sudo dnf install -y gstreamer1-plugins-bad-\* gstreamer1-plugins-good-\* gstreamer1-plugins-base gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
-    sudo dnf install -y lame* --exclude=lame-devel
-    sudo dnf group upgrade -y --with-optional --allowerasing --skip-broken Multimedia
-    sudo dnf install -y ffmpeg ffmpeg-libs libva libva-utils intel-media-driver mozilla-openh264 gnome-shell-extension-pop-shell xprop distrobox gparted @virtualization tlp tlp-rdw gnome-tweaks
+    sudo dnf install -y distrobox gparted @virtualization gnome-tweaks tldr
     
 }
 
 install_flatpaks() {
     printf '\nInstalling flatpaks...\n\n'
     
-    flatpak install # 
+    flatpak install com.brave.Browser org.videolan.VLC com.valvesoftware.Steam com.mattjakeman.ExtensionManager com.github.tchx84.Flatseal com.usebottles.bottles com.obsproject.Studio us.zoom.Zoom org.gimp.GIMP org.libreoffice.LibreOffice org.onlyoffice.desktopeditors io.gitlab.librewolf-community com.bitwarden.desktop com.protonvpn.www org.prismlauncher.PrismLauncher
 }
 
 set_gsettings() {
@@ -63,11 +60,11 @@ remove_rpms
 
 upgrade_rpms
 
-#install_rpmfusion
+install_rpmfusion
 
-#install_rpms
+install_rpms
 
-#install_flatpaks
+install_flatpaks
 
 #set_gsettings
 
