@@ -26,7 +26,7 @@ install_rpmfusion() {
     printf '\nInstalling RPM Fusion repositories...\n\n'
     
     sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-'$(rpm %fedora)'.noarch.rpm
-    sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-'$(rpm %fedora)'.noarch.rpm
+    # sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-'$(rpm %fedora)'.noarch.rpm
     
     sudo dnf groupupdate -y core
 }
@@ -34,7 +34,12 @@ install_rpmfusion() {
 install_rpms() {
     printf '\nInstalling RPM packages...\n\n'
     
-    sudo dnf install -y distrobox gparted @virtualization gnome-tweaks tldr
+    # Install media codecs
+    sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+    sudo dnf install lame\* --exclude=lame-devel
+    sudo dnf group upgrade --with-optional Multimedia
+    
+    sudo dnf install -y distrobox gparted @virtualization gnome-tweaks tldr intel-media-driver ffmpeg-free libavcodec-freeworld
     
 }
 
