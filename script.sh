@@ -46,7 +46,7 @@ install_rpms() {
     dnf install -y lame\* --exclude=lame-devel
     dnf group upgrade -y --with-optional Multimedia
     
-    dnf install -y distrobox gparted @virtualization gnome-tweaks tldr intel-media-driver ffmpeg-free libavcodec-freeworld
+    dnf install -y gparted gnome-tweaks tldr intel-media-driver ffmpeg-free libavcodec-freeworld
     
 }
 
