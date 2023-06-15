@@ -12,6 +12,7 @@ git clone https://github.com/starship-boi/fedora-setup
 cd fedora-setup
 ```
 Note: At this point, consider inspecting the scripts to ensure they have not been tampered with.
+
 2. Make the scripts executable:
 ```
 chmod +x main.sh root.sh user.sh
