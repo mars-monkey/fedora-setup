@@ -23,7 +23,7 @@ chmod +x main.sh root.sh user.sh
 ```
 Bear in mind that this require `sudo` permissions.
 
-Alternatively, run it as a single command:
+### Single command:
 ```
 git clone https://github.com/starship-boi/fedora-setup && cd fedora-setup && chmod +x main.sh root.sh user.sh && ./main.sh
 ```
