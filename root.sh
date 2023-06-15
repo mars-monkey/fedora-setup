@@ -1,12 +1,5 @@
 #!/bin/bash
 
-GREEN='\e[42m'
-NO_COLOR='\e[49m'
-
-disable_selinux() {
-    echo -e '\n'${GREEN}'Disabling SELinux...'${NO_COLOR}'\n'
-}
-
 edit_dnf_config() {
     echo -e '\n'${GREEN}'Configuring DNF...'${NO_COLOR}'\n'
     
@@ -29,7 +22,7 @@ install_rpmfusion() {
     echo -e '\n'${GREEN}'Installing RPM Fusion repositories...'${NO_COLOR}'\n'
     
     dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-'$(rpm %fedora)'.oarch.rpm
-    # dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-'$(rpm %fedora)'.oarch.rpm
+    dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-'$(rpm %fedora)'.oarch.rpm
     
     dnf groupupdate -y core
 }
@@ -45,8 +38,6 @@ install_rpms() {
     dnf install -y btrfs-assistant gnome-tweaks gnome-shell-extension-pop-shell gparted neofetch tldr ffmpeg-free intel-media-driver libavcodec-freeworld
     
 }
-
-#disable_selinux
 
 edit_dnf_config
 
