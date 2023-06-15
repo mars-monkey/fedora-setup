@@ -3,9 +3,13 @@ This is a post-install script to help me set up Fedora installs how I like them 
 
 ## Usage
 
-1. Clone the repo and enter it:
+1. Clone the repo:
 ```
-git clone https://github.com/starship-boi/fedora-setup && cd fedora-setup
+git clone https://github.com/starship-boi/fedora-setup
+```
+2. Enter the repo directory:
+```
+cd fedora-setup
 ```
 2. Make the scripts executable:
 ```
@@ -16,3 +20,8 @@ chmod +x main.sh root.sh user.sh
 ./main.sh
 ```
 Bear in mind that this require `sudo` permissions.
+
+Alternatively, run it as a single command:
+```
+git clone https://github.com/starship-boi/fedora-setup && cd fedora-setup && chmod +x main.sh root.sh user.sh && ./main.sh
+```
