@@ -21,8 +21,8 @@ upgrade_rpms() {
 install_rpmfusion() {
     echo -e '\n'${GREEN}'Installing RPM Fusion repositories...'${NO_COLOR}'\n'
     
-    dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-'$(rpm %fedora)'.oarch.rpm
-    dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-'$(rpm %fedora)'.oarch.rpm
+    dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-'$(rpm %fedora)'.noarch.rpm
+    dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-'$(rpm %fedora)'.noarch.rpm
     
     dnf groupupdate -y core
 }
@@ -39,6 +39,10 @@ install_rpms() {
     
 }
 
+add_flathub() {
+    echo -e '\n'${GREEN}'Adding Flathub...'${NO_COLOR}'\n'
+}
+
 edit_dnf_config
 
 remove_rpms
@@ -48,3 +52,5 @@ upgrade_rpms
 install_rpmfusion
 
 install_rpms
+
+add_flathub
