@@ -48,14 +48,14 @@ add_flathub() {
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 }
 
-#edit_dnf_config
+edit_dnf_config
 
-#remove_rpms
+remove_rpms
 
-#upgrade_rpms
+upgrade_rpms
 
-#install_rpmfusion
+install_rpmfusion
 
-#install_rpms
+install_rpms
 
 add_flathub
