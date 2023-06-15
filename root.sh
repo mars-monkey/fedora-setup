@@ -1,5 +1,8 @@
 #!/bin/bash
 
+GREEN='\e[42m'
+NO_COLOR='\e[49m'
+
 edit_dnf_config() {
     echo -e '\n'${GREEN}'Configuring DNF...'${NO_COLOR}'\n'
     
@@ -41,16 +44,18 @@ install_rpms() {
 
 add_flathub() {
     echo -e '\n'${GREEN}'Adding Flathub...'${NO_COLOR}'\n'
+    
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 }
 
-edit_dnf_config
+#edit_dnf_config
 
-remove_rpms
+#remove_rpms
 
-upgrade_rpms
+#upgrade_rpms
 
-install_rpmfusion
+#install_rpmfusion
 
-install_rpms
+#install_rpms
 
 add_flathub
