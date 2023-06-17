@@ -13,5 +13,5 @@ chmod +x main.sh root.sh user.sh && ./main.sh
 
 ### Single command:
 ```
-git clone https://github.com/starship-boi/fedora-setup && cd fedora-setup && chmod +x main.sh root.sh user.sh && ./main.sh
+sudo echo && git clone https://github.com/starship-boi/fedora-setup && cd fedora-setup && chmod +x main.sh root.sh user.sh && ./main.sh
 ```
