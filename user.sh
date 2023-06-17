@@ -19,9 +19,11 @@ kvantum_libadwaita() {
     echo -e '\n'${GREEN}'Installing Kvantum Adwaita theme...'${NO_COLOR}'\n'
 
     QT_STYLE_OVERRIDE=kvantum
-    wget https://raw.githubusercontent.com/GabePoel/KvLibadwaita/main/src/KvLibadwaita/KvLibadwaita{.kvconfig,.svg,Dark.kvconfig,Dark.svg}
+    wget -P ~/.config/Kvantum https://raw.githubusercontent.com/GabePoel/KvLibadwaita/main/src/KvLibadwaita/KvLibadwaita{.kvconfig,.svg,Dark.kvconfig,Dark.svg}
 }
 
 install_flatpaks
 
 firefox_gnome_theme
+
+kvantum_libadwaita
