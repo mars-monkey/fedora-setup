@@ -24,7 +24,7 @@ upgrade_rpms() {
 install_rpmfusion() {
     echo -e '\n'${GREEN}'Installing RPM Fusion repositories...'${NO_COLOR}'\n'
     
-    dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-'$(rpm %fedora)'.noarch.rpm
+    dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
     dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-'$(rpm %fedora)'.noarch.rpm
     
     dnf groupupdate -y core
@@ -38,7 +38,7 @@ install_rpms() {
     dnf install -y lame\* --exclude=lame-devel
     dnf group upgrade -y --with-optional Multimedia
     
-    dnf install -y adw-gtk3 btrfs-assistant gnome-tweaks gnome-shell-extension-pop-shell gparted neofetch tldr ffmpeg-free intel-media-driver libavcodec-freeworld
+    dnf install -y adw-gtk3-theme btrfs-assistant gnome-tweaks gnome-shell-extension-pop-shell gparted neofetch tldr ffmpeg-free intel-media-driver libavcodec-freeworld
     
 }
 
