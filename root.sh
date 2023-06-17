@@ -42,8 +42,10 @@ install_rpms() {
     
 }
 
-add_flathub() {
+switch_flatpak_remotes() {
     echo -e '\n'${GREEN}'Adding Flathub...'${NO_COLOR}'\n'
+    
+    flatpak remote-del fedora fedora-testing
     
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 }
