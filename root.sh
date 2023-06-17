@@ -38,7 +38,7 @@ install_rpms() {
     dnf install -y lame\* --exclude=lame-devel
     dnf group upgrade -y --with-optional Multimedia
     
-    dnf install -y btrfs-assistant gnome-tweaks gnome-shell-extension-pop-shell gparted neofetch tldr ffmpeg-free intel-media-driver libavcodec-freeworld
+    dnf install -y adw-gtk3 btrfs-assistant gnome-tweaks gnome-shell-extension-pop-shell gparted neofetch tldr ffmpeg-free intel-media-driver libavcodec-freeworld
     
 }
 
