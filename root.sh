@@ -35,7 +35,7 @@ install_rpms() {
     # Install media codecs
     dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
     dnf install -y lame\* --exclude=lame-devel
-    dnf group upgrade -y --with-optional Multimedia
+    dnf group upgrade -y --with-optional --allow-erasing Multimedia
     
     dnf install -y adw-gtk3-theme btrfs-assistant gnome-tweaks gnome-shell-extension-pop-shell gparted neofetch tldr ffmpeg-free intel-media-driver libavcodec-freeworld
     
@@ -59,4 +59,4 @@ install_rpmfusion
 
 install_rpms
 
-add_flathub
+switch_flatpak_remotes
